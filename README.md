@@ -4,4 +4,4 @@
 
 It includes 
 
-1.Scientific Computing with Python Certification
+* Scientific Computing with Python Certification
