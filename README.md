@@ -1,5 +1,7 @@
 **#FreeCodeCamp** 
 
+![GitHub Logo](/images/logo.png)
+
 *I write code from the site: https://www.freecodecamp.org*
 
 It includes 
