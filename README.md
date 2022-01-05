@@ -4,4 +4,6 @@
 
 It includes 
 
+* Responsive Web Design Certification
+
 * Scientific Computing with Python Certification
