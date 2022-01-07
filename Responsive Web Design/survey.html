@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="survey-style.css">
+    <title>Survey Form</title>
+</head>
+<body>
+<!-- Header -->
+<header>
+    <h1 id="title">Survey Form</h1>
+    <p id="description">Thank you in advance for your time and support</p>
+</header>
+
+<form id="survey-form">
+    <!-- Name Field-->
+    <div class="form-group">
+        <label id="name-label" for="name">Name</label>
+        <input id="name" type="text" name="name" placeholder="Enter your name" required>
+    </div>
+
+    <!-- Age Field-->
+    <div class="form-group">
+        <label id="number-label" for="number">Age</label>
+        <input id="number" type="number" name="age" min="18" max="99" placeholder="Enter your age" required>
+    </div>
+
+    <!-- Email Field-->
+    <div class="form-group">
+        <label id="email-label" for="email">Email</label>
+        <input id="email" type="email" name="email" placeholder="Enter your email" required>
+    </div>
+
+    <!-- Dropdown Field -->
+    <div class="form-group">
+        <p>Which one best describes you?</p>
+        <select id="dropdown" name="role" required>
+            <option disabled selected value="">Select</option>
+            <option value="Student">Angry</option>
+            <option value="Teacher">Depressed</option>
+            <option value="Other">Fear</option>
+        </select>
+    </div>
+
+    <!-- Radio Field -->
+    <div class="form-group">
+        <p>Would you recommend this site to a friend?</p>
+        <label>
+            <input name="user-recommend" value="definitely" type="radio" class="input-radio" checked>
+            Definitely
+        </label>
+        <label>
+            <input name="user-recommend" value="maybe" type="radio" class="input-radio">
+            Maybe
+        </label>
+        <label>
+            <input name="user-recommend" value="not-sure" type="radio" class="input-radio">
+            Not Sure
+        </label>
+    </div>
+
+    <!-- Checkboxes Field-->
+    <div class="form-group">
+        <p>What do you like most?<span class="clue"> (Check all that apply)</span> </p>
+        <label>
+            <input name="prefer" value="paint" type="checkbox" class="input-checkbox">
+            Painting/Sketching
+        </label>
+        <label>
+            <input name="prefer" value="photo" type="checkbox" class="input-checkbox">
+            Photography
+        </label>
+        <label>
+            <input name="prefer" value="bake" type="checkbox" class="input-checkbox">
+            Cooking/Baking
+        </label>
+        <label>
+            <input name="prefer" value="read" type="checkbox" class="input-checkbox">
+            Reading
+        </label>
+    </div>
+
+    <!-- Textarea Field -->
+    <div class="form-group">
+        <p>Any comments or suggestions?</p>
+        <textarea id="comments" name="comment" placeholder="Enter your comment here..."></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group">
+        <button id="submit" type="submit">Submit</button>
+    </div>
+</form>
+
+</body>
+</html>
