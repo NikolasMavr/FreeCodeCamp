@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="technical-style.css">
+    <title>Technical Documentation Page</title>
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav id="navbar">
+    <header>Fat-Free Framework</header>
+    <ul>
+        <li><a class="nav-link" href="#Getting_Started">Getting Started</a></li>
+        <li><a class="nav-link" href="#Hello_World_Fat-Free_Recipe">Hello World Fat-Free Recipe</a></li>
+        <li><a class="nav-link" href="#Overview">Overview</a></li>
+        <li><a class="nav-link" href="#Routes_and_Tokens">Routes and Tokens</a></li>
+        <li><a class="nav-link" href="#Dynamic_Web_Sites">Dynamic Web Sites</a></li>
+        <li><a class="nav-link" href="#Rerouting">Rerouting</a></li>
+        <li><a class="nav-link" href="#Triggering_a_404">Triggering a 404</a></li>
+        <li><a class="nav-link" href="#ReST_Representational_State_Transfer">ReST Representational State Transfer</a></li>
+        <li><a class="nav-link" href="#Reference">Reference</a></li>
+    </ul>
+</nav>
+
+<!-- Main Content -->
+<main id="main-doc">
+
+    <!--- Getting Started -->
+    <section class="main-section" id="Getting_Started">
+        <header>Getting Started</header>
+        <article>
+            <p>
+                Fat-Free Framework makes it easy to build entire Websites in a jiffy. With the same power and brevity as modern Javascript toolkits and libraries, F3 helps you write better-looking
+                and more reliable PHP programs. One glance at your PHP source code and anyone will find it easy to understand, how much you can accomplish in so few lines of code, and how powerful the results are.
+            </p>
+            <p>
+                F3 is one of the best documented frameworks around. Learning it costs next to nothing. No strict set of difficult-to-navigate directory structures and obtrusive programming steps.
+                No truck load of configuration options just to display Hello, World in your browser. Fat-Free gives you a lot of freedom - and style - to get more work done with ease and in less time.
+            </p>
+            <p>
+                F3's declarative approach to programming makes it easy for novices and experts alike to understand PHP code. If you're familiar with the programming language Ruby, you'll notice the resemblance
+                between Fat-Free and Sinatra micro-framework because they both employ a simple Domain-Specific Language for ReSTful Web services. But unlike Sinatra and its PHP incarnations
+                (Fitzgerald, Limonade, Glue - to name a few), Fat-Free goes beyond just handling routes and requests. Views can be in any form, such as plain text, HTML, XML or an e-mail message.
+                The framework comes with a fast and easy-to-use template engine. F3 also works seamlessly with other template engines, including Twig, Smarty, and PHP itself. Models communicate with F3's data mappers
+                and the SQL helper for more complex interactions with various database engines. Other plug-ins extend the base functionality even more. It's a total Web development framework - with a lot of muscle!
+            </p>
+        </article>
+    </section>
+
+    <!--- Hello, World: The Less-Than-A-Minute Fat-Free Recipe -->
+    <section class="main-section" id="Hello_World_Fat-Free_Recipe">
+        <header>Hello World Fat-Free Recipe</header>
+        <article>
+            <ul>
+                <li>Time to start writing our first application:</li>
+            </ul>
+            <code>$f3 = require('path/to/base.php');
+                $f3->route('GET /',
+                function() {
+                echo 'Hello, world!';
+                }
+                );
+                $f3->run();
+            </code>
+            <p>
+                Prepend base.php on the first line with the appropriate path. Save the above code fragment as index.php in your Web root folder. We've written our first Web page.
+            </p>
+            <ul>
+                <li>Using composer? Then just run composer require bcosca/fatfree and use the following:</li>
+            </ul>
+            <code>require 'vendor/autoload.php';
+                $f3 = \Base::instance();
+                $f3->route('GET /',
+                function() {
+                echo 'Hello, world!';
+                }
+                );
+                $f3->run();
+            </code>
+            <p>
+                The first command tells the PHP interpreter that you want the framework's functions and features available to your application. The $f3->route() method informs Fat-Free that a Web page is available
+                at the relative URL indicated by the slash (/). Anyone visiting your site located at https://www.example.com/ will see the 'Hello, world!' message because the URL / is equivalent to the root page.
+                To create a route that branches out from the root page, like https://www.example.com/inside/, you can define another route with a simple GET /inside string.
+            </p>
+            <p>
+                The route described above tells the framework to render the page only when it receives a URL request using the HTTP GET method. More complex Web sites containing forms use other HTTP methods like POST,
+                and you can also implement that as part of a $f3->route() specification.
+            </p>
+            <p>
+                If the framework sees an incoming request for your Web page located at the root URL /, it will automatically route the request to the callback function,
+                which contains the code necessary to process the request and render the appropriate HTML stuff. In this example, we just send the string 'Hello, world!' to the user's Web browser.
+            </p>
+        </article>
+    </section>
+
+    <!-- Overview -->
+    <section class="main-section" id="Overview">
+        <header>Overview</header>
+        <article>
+            <ul>
+                <li>
+                    Our first example wasn't too hard to swallow, was it? If you like a little more flavor in your Fat-Free soup, insert another route before the $f3->run() command:
+                </li>
+            </ul>
+            <code>$f3->route('GET /about',
+                function() {
+                echo 'Donations go to a local charity... us!';
+                }
+                );
+            </code>
+            <ul>
+                <li>
+                    You don't want to clutter the global namespace with function names? Fat-Free recognizes different ways of mapping route handlers to OOP classes and methods:
+                </li>
+            </ul>
+            <code>class WebPage {
+                function display() {
+                echo 'I cannot object to an object';
+                }
+                }
+                $f3->route('GET /about','WebPage->display');
+            </code>
+        </article>
+    </section>
+
+    <!-- Routes and Tokens -->
+    <section class="main-section" id="Routes_and_Tokens">
+        <header>Routes and Tokens</header>
+        <article>
+            <p>
+                As a demonstration of Fat-Free's powerful domain-specific language (DSL), you can specify a single route to handle different possibilities:
+            </p>
+            <code>$f3->route('GET /brew/@count',
+                function($f3) {
+                echo $f3->get('PARAMS.count').' bottles of beer on the wall.';
+                }
+                );
+            </code>
+            <p>
+                This example shows how we can specify a token @count to represent part of a URL. The framework will serve any request URL that matches the /brew/ prefix, like /brew/99, /brew/98, etc.
+                This will display '99 bottles of beer on the wall' and '98 bottles of beer on the wall', respectively. Fat-Free will also accept a page request for /brew/unbreakable.
+                (Expect this to display 'unbreakable bottles of beer on the wall'.) When such a dynamic route is specified, Fat-Free automagically populates the global PARAMS array variable with
+                the value of the captured strings in the URL. The $f3->get() call inside the callback function retrieves the value of a framework variable. You can certainly apply this method in your code
+                as part of the presentation or business logic.
+            </p>
+        </article>
+    </section>
+
+    <!-- Dynamic Web Sites -->
+    <section class="main-section" id="Dynamic_Web_Sites">
+        <header>Dynamic Web Sites</header>
+        <article>
+            <p>
+                Wait a second - in all the previous examples, we never really created any directory in our hard drive to store these routes. The short answer: we don't have to. All F3 routes are virtual.
+                They don't mirror our hard disk folder structure. If you have programs or static files (images, CSS, etc.) that do not use the framework - as long as the paths to these files do not conflict
+                with any route defined in your application - your Web server software will deliver them to the user's browser, provided the server is configured properly.
+            </p>
+        </article>
+    </section>
+
+    <!-- Rerouting -->
+    <section class="main-section" id="Rerouting">
+        <header>Rerouting</header>
+        <article>
+            <p>
+                So let's get back to coding. You can declare a page obsolete and redirect your visitors to another site:
+            </p>
+            <code>$f3->redirect('GET|HEAD /obsoletepage', '/newpage');</code>
+            <p>
+                which is the same as
+            </p>
+            <code>$f3->route('GET|HEAD /obsoletepage',
+                function($f3) {
+                $f3->reroute('/newpage');
+                }
+                );
+            </code>
+            <p>
+                If someone tries to access the URL https://www.example.com/obsoletepage using either HTTP GET or HEAD request, the framework redirects the user to the URL: https://www.example.com/newpage
+                as shown in the above example. You can also redirect the user to another site, like $f3->reroute('https://www.anotherexample.org/');.
+            </p>
+        </article>
+    </section>
+
+    <!-- Triggering a 404 -->
+    <section class="main-section" id="Triggering_a_404">
+        <header>Triggering a 404</header>
+        <article>
+            <p>
+                At runtime, Fat-Free automatically generates an HTTP 404 error whenever it sees that an incoming HTTP request does not match any of the routes defined in your application.
+                However, there are instances when you need to trigger it yourself. Take for instance a route defined as GET /dogs/@breed. Your application logic may involve searching a database
+                and attempting to retrieve the record corresponding to the value of @breed in the incoming HTTP request. Since Fat-Free will accept any value after the /dogs/ prefix because of the presence
+                of the @breed token, displaying an HTTP 404 Not Found message programmatically becomes necessary when the program doesn't find any match in our database. To do that, use the following command:
+            </p>
+            <code>$f3->error(404);</code>
+        </article>
+    </section>
+
+    <!-- ReST: Representational State Transfer -->
+    <section class="main-section" id="ReST_Representational_State_Transfer">
+        <header>ReST Representational State Transfer</header>
+        <article>
+            <p>
+                Fat-Free's architecture is based on the concept that HTTP URIs represent abstract Web resources (not limited to HTML) and each resource can move from one application state to another.
+                For this reason, F3 does not have any restrictions on the way you structure your application. If you prefer to use the Model-View-Controller pattern, F3 can help you compartmentalize
+                your application components to stick to this paradigm. On the other hand, the framework also supports the Resource-Method-Representation pattern, and implementing it is more straightforward.
+                Here's an example of a ReST interface:
+            </p>
+            <code>class Item {
+                function get() {}
+                function post() {}
+                function put() {}
+                function delete() {}
+                }
+
+                $f3=require('lib/base.php');
+                $f3->map('/cart/@item','Item');
+                $f3->run();
+            </code>
+        </article>
+    </section>
+
+    <!-- Reference -->
+    <section class="main-section" id="Reference">
+        <header>Reference</header>
+        <article>
+            <ul>
+                <li>
+                    All the documentation in this page is taken from
+                    <a href="https://fatfreeframework.com/3.6/user-guide" target="_blank">Fat-Free Framework User Guide</a>
+                </li>
+            </ul>
+        </article>
+    </section>
+
+</main>
+
+</body>
+</html>

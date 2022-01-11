@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    background-color: #eee;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 25px;
+}
+/* Style Header/Description */
+header {
+    color: black;
+    margin: 10px;
+    text-align: center;
+    font-size: 1.8em;
+}
+/* Style Navigation Bar */
+#navbar{
+    position: fixed;
+    min-width: 300px;
+    width: 335px;
+    height: 100%;
+    border-right: solid;
+    border-color: #302B27;
+}
+#navbar ul {
+    height: 100%;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#navbar li {
+    color: #201E1F;
+    border-top: 1px solid;
+    list-style: none;
+    position: relative;
+    width: 100%;
+}
+#navbar a {
+    display: block;
+    padding: 15px 25px;
+    color: #201E1F;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Style Main Content */
+#main-doc header{
+    text-align: left;
+    margin: 0px;
+}
+#main-doc{
+    position: absolute;
+    margin-left: 375px;
+    padding: 15px;
+}
+/* Style Section */
+section article {
+    color: #201E1F;
+    margin: 10px;
+    font-size: 1.125em;
+}
+section li {
+    margin: 15px 0px 0px 20px;
+}
+#Reference a{
+    text-decoration: none;
+}
+/* Style Code Section */
+code{
+    display: block;
+    white-space: pre-line;
+    position: relative;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 2;
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 25px;
+}
+/* Navigation Bar/Main Content Mobile View */
+@media only screen and (max-width:650px) {
+    #navbar {
+        background-color: white;
+        position: absolute;
+        top: 0;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        max-height: 254px;
+        border: none;
+        z-index: 1;
+        border-bottom: 2px solid;
+    }
+    #navbar ul{
+        border: 1px solid;
+        height: 210px;
+    }
+    #main-doc {
+        position: relative;
+        margin-left: 0px;
+        margin-top: 270px;
+    }
+}
